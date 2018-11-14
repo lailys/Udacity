@@ -1,0 +1,290 @@
+html {
+    box-sizing: border-box;
+}
+*{
+  flex-flow: row wrap;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda','cursive';
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container h1 h2 {
+font-family: 'Poiret One', cursive;
+    font-size: 60px;
+    text-align: center;
+    color:  #2e3d49;
+
+}
+
+.moves{
+color: #2e3d49;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+  *{text-decoration: none;}
+.deck {
+    width: 350px;
+    min-height: 380px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 70px;
+    width:70px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transform-origin: center right;
+
+
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+    animation-name: pulse;
+ 	-webkit-backface-visibility: visible;
+ 	backface-visibility: visible;
+ 	animation-duration: .75s;
+
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+    animation-name: pulse;
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
+	animation-duration: .75s;
+}
+.deck .card.noMatch {
+
+    cursor: default;
+    background: #FF007F;
+    font-size: 33px;
+    animation-name: pulse;
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
+	animation-duration: .75s;
+}
+
+
+
+
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+    color: #2e3d49;
+    margin-left: 5px;
+
+}
+.score-panel .stars li .hide{
+
+    display: none;
+
+}
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+    margin-right: 5px;
+    color: #2e3d49;
+}
+.timer {
+	display: inline-block;
+	margin-left: 25%
+}
+/*
+ * Styles for popup box
+ */
+
+ .modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.1);
+        transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+
+    }
+    .modalContent {
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 1rem 1.5rem;
+        width: 24rem;
+        border-radius: 0.5rem;
+
+    }
+    .modalContent h1{
+
+
+ font-size: 17px;
+           font-family: 'Poiret One', cursive;
+           color:  #2e3d49;
+    }
+
+.modalContent h1 span{
+
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6,#aa7ecd ));
+    background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+  font-size: 19px;
+}
+
+#move,#time{
+  color:#e75480;
+}
+
+    .closeButton {
+        float: right;
+        width: 1.5rem;
+        line-height: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        background-color: lightgray;
+      }
+      .closeButton:hover {
+      color: #E5F720;
+   }
+   .showModal {
+     visibility: visible ;
+opacity: 100;
+    }
+    @media screen and (max-width: 350px) {
+      .deck {
+          width: 250px;
+          min-height: 280px;}
+      .deck .card {
+              height:50px;
+              width:50px;}
+              .score-panel {
+                  text-align: left;
+                  width: 250px;
+                  margin-bottom: 10px;
+              }
+
+  }
+
+
+  @media screen and (min-width: 450px) and (max-width: 600px) {
+    .deck {
+        width: 450px;
+        min-height: 480px;
+      }
+    .deck .card {
+            height:90px;
+            width:90px;
+          }
+            .score-panel {
+                text-align: left;
+                width: 450px;
+                margin-bottom: 10px;
+            }
+
+}
+
+
+@media screen and (min-width: 601px) {
+  .deck {
+      width: 650px;
+      min-height: 680px;
+    }
+  .deck .card {
+          height:135px;
+          width:135px;
+        }
+          .score-panel {
+              text-align: left;
+              width: 600px;
+              margin-bottom: 10px;
+          }
+
+}
